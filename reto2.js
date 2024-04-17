@@ -1,38 +1,25 @@
-// Souvenirs
+// souvernirs
 
-function validar_dato(opcion) {
-  if ((opcion = true)) {
-    let nombre = prompt('ingresa el nombre:');
-    let costo = parseFloat(prompt('ingresa el costo:'));
-    let disponibilidad = confirm(
-      'Ingresa Si, si el souvenirs esta disponible o cualquier dato si no esta disponible'
-    );
+const souvernirs = {};
 
-    alert(nombre + ' ' + typeof nombre);
-    alert(costo + ' ' + typeof costo);
-    alert(disponibilidad + ' ' + typeof disponibilidad);
-  }
-}
+let continuar = true;
 
-opcion = parseInt(
-  prompt(
-    'Presiona 1 para continuar validando souvenirs o cualquier otra tecla para salir.'
-  )
-);
-if (opcion === 1) {
-  validar_dato(opcion);
-  opcion = prompt(
-    'Presiona 1 para continuar validando souvenirs o cualquier otra tecla para salir.'
-  );
-  if (opcion == 1) {
-    validar_dato(opcion);
-    opcion = prompt(
-      'Presiona 1 para continuar validando souvenirs o cualquier otra tecla para salir.'
-    );
-    if (opcion == 1) {
-      validar_dato(opcion);
+while (continuar) {
+    const llave = prompt("Ingrese el nombre del souvernir:")
+    const disponible = confirm("¿El souvernir esta disponible?:")
+    const precio = parseFloat(prompt("Ingrese el precio del souvernir:"))
+    if (!isNaN(precio) && typeof llave === "string" &&  typeof disponible === "boolean" ){
+        souvernirs[llave] = {precios:precio,disponibilidad:disponible}
+        alert("Souvernir agregados")
+
     }
-  }
-} else {
-  alert('Has salido del programa');
-}
+    else{
+        alert("Ingrese un valor correcto")
+    }
+    continuar = confirm("Deseas agregar un nuevo grupo de items")
+    if(!continuar) break;
+    }
+
+    
+alert("Esta la lista de souvernirs:" +JSON.stringify(souvernirs))
+
