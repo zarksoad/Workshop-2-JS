@@ -44,6 +44,7 @@ while (continues) {
         presupuesto_final = presupuesto_final - actividades[llave];
         if (presupuesto_final < 0) {
           alert('No puedes comprar la actividad.');
+          delete actividades;
         } else {
           actividades_validadas[key] = costo;
           alert('actividad Comprada');
